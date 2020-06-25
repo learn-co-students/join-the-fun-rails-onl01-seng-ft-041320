@@ -1,0 +1,16 @@
+The next step is set up a has_many :through relationship between these three models so that we can keep track of who's driving who around. It will work like this:
+
+Taxi -< Rides >- Passengers
+
+taxi has many passengers
+passengers has many taxes
+taxi has many passengers through Rides
+passengers has_many taxis through Rides
+
+This way, a taxi can have many passengers, and a passenger can have many taxis!
+
+`Each table only has a primary key, so you'll need to write a migration to get the database ready to handle the "has_many :through" relationship.
+`rails g migrate add_foreign_keys_to_ride
+`foreign keys should be taxi_id and passenger_id
+ 
+ model should have has_many
